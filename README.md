@@ -16,13 +16,13 @@ To get started...
 - [Cromwell on Azure](01-Cromwell-Azure/../README.md)
 - [Nextflow on Azure](01-Cromwell-Azure/../README.md)
 - [Snakemake on Azure](01-Cromwell-Azure/../README.md)
-- 
-## Why did we create this and why should you adopt it?
+  
+## Why did I create this and why does it matter?
 
 There's a lot of information on genomics but it's geared for practioners.. If you are just
-starting out it's easy to get overwhelmed.. **How do we put this all together into a single workflow?**
+starting out it's easy to get overwhelmed.. **How do we put this all together into a single cohesive story?**
 
-## Design Goals
+## My Goals
 
 The goal for this quickstart is to give you the basics of what you need to get started,
 while telling a cohesive easy to follow story.
