@@ -1,6 +1,6 @@
 # Genomics-Quickstart
 
-The Data Science Lifecycle Process is a set of prescriptive steps and best practices to enable data science teams to consistently deliver value. It includes issue templates for common data science work types, a branching strategy that fits the data science development flow, and prescriptive guidance on how to piece together all the various tools and workflows required to make data science work.
+Getting started on genomics?
 
 ## Getting Started
 
