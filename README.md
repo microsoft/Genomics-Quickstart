@@ -8,14 +8,14 @@ To get started...
 
 ## Key Topics
 
-- [DNA Basics](00-Genomics-Basics/dna-structure.md)
-- [Sequencing](00-Genomics-Basics/dna-sequencing.md)
-- [Alignment](00-Genomics-Basics/dna-alignment.md)
-- [Variant Calling](00-Genomics-Basics/variant-calling.md)
-- [Tertiary Analysis](00-Genomics-Basics/tertiary-analysis.md)
-- [Cromwell on Azure](01-Cromwell-Azure/../README.md)
-- [Nextflow on Azure](01-Cromwell-Azure/../README.md)
-- [Snakemake on Azure](01-Cromwell-Azure/../README.md)
+- [DNA Basics](00-Genomics-Basics/dna-basics.md)
+- [Sequencing](00-Genomics-Basics/pipelines-basics.md)
+- [Alignment](00-Genomics-Basics/pipelines-basics.md#sequencingprimary-analysis)
+- [Variant Calling](00-Genomics-Basics/pipelines-basics.md#secondary-analysis)
+- [Tertiary Analysis](00-Genomics-Basics/pipelines-basics.md#tertiary-analysis)
+- [Cromwell on Azure](01-Cromwell-Azure/README.md)
+- [Nextflow on Azure](02-Nextflow-Azure/README.md)
+- [Snakemake on Azure](03-Snakemake-Azure/README.md)
   
 ## Why did I create this and why does it matter?
 
