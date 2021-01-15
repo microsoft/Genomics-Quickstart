@@ -13,6 +13,7 @@ In order to have a good understanding of genetics, you'll need to understand key
 Cells are the most basic elements of all living things and they have very distinct functions. Although they have different functions, human cells have certain parts that govern that function. These parts are called organelles and we'll highlight a few critical ones. The illustration below shows a a cross section of some of the key organelles.
 
 ![Human Cell](./../99-Images/cell-cross-section.png)
+
 [Credit: The New Genetics - NIH][1]
 
 ### **Nucleus**
@@ -33,23 +34,27 @@ DNA is composed of four bases, Adenine(A), Guanine(G), Cytosine(C) and Thymine(T
 So, how does a 3 billion long string fit in the microscopic human cell? This is one of the amazing things about the human body. DNA bases pair up with each other, the chemical structure allows Adenine(A) to attract/attach to Thymine(T) and Cytosine(C) attracts/attaches to Guanine(G). These units are called base pairs. To aid with stability, a base pair combines with a sugar and a phosphate to form a nucleotide. Nucleuotides are arranged into the famous double helix shape depicted below.
 
 ![Human Cell](./../99-Images/dna-double-helix.png)
+
 [Credit: U.S. National Library of Medicine][2]
 
 Once this base structure has been formed, the next challenge is how to package it so it can fit in a cell. This is accomplished by tightly winding the dna around proteins called histones and them even more tighly compacting them into the general shape that's a chromosome.
 
 ![Human Cell](./../99-Images/dna-histone-chromosome.png)
+
 [Credit: U.S. National Library of Medicine][3]
 
 ## Chromosomes
 Chromosomes are units of storage of DNA. A chromosome is made up of tightly packaged DNA. Human cells have two copies of 23 chromosomes, one copy inherited from your father and one copy inherited from your mother. Because humans have two copies (2 x 23 chromosomes), they are referred to as diploid. A picture of human chromosomes called a **karyotype** is used by scientist to show human chromosomes. The first 44 chromosomes are called **autosomes** and structurally are similiar for males and females. The last 2 chromosomes called the **sex chromosomes** are what determine gender. Males are born with an X and Y chromosome and females are both with 2 Xs.
 
 ![Human Cell](./../99-Images/dna-karyotype.png)
+
 [Credit: U.S. National Library of Medicine][4]
 
 ## Genes
 Genes are sections of your DNA that determine how the body functions. The Human Genome Project estimates that humans have between 20,000 to 25,000 genes. Some of the genes are small, a few hundred base pairs, while some are as large as 2 million bases pairs.
 
 ![Human Cell](./../99-Images/dna-genes.png)
+
 [Credit: U.S. National Library of Medicine][5]
 
 Because we are diploid, every person has two copies of the each gene inherited from each parent. Slight variations in genes from person to person is what determines the physical attributes, **phenotypes**, that make us unique.
@@ -63,6 +68,7 @@ This is the central principle that explains how DNA is processed by your body to
 The second phase in the process takes this single strand of RNA and reads each of the bases sequentially. Each three bases called a **codon** is **translated** into an amino acid as depicted below.
 
 ![Human Cell](./../99-Images/dna-central-dogma.png)
+
 [Credit: Khan Academy][6]
 
 Each codon maps to one of 22 amino acids. One the process is completed, the resulting chain of amino acids (polypeptide chain) is then folded into a protein which will determine the function of the cell.
@@ -75,6 +81,6 @@ Each codon maps to one of 22 amino acids. One the process is completed, the resu
 [6]: https://www.khanacademy.org/science/high-school-biology/hs-molecular-genetics/hs-rna-and-protein-synthesis/a/intro-to-gene-expression-central-dogma
 
 ## Additional Resources
-- ![U.S. National Library of Medicine](https://medlineplus.gov/genetics/)
-- ![National Institute of General Medical Sciences](https://www.nigms.nih.gov/education/genes/)
-- ![Khan Academy](https://www.khanacademy.org/science/high-school-biology/hs-molecular-genetics/hs-rna-and-protein-synthesis/v/molecular-structure-of-rna)
+- [U.S. National Library of Medicine](https://medlineplus.gov/genetics/)
+- [National Institute of General Medical Sciences](https://www.nigms.nih.gov/education/genes/)
+- [Khan Academy](https://www.khanacademy.org/science/high-school-biology/hs-molecular-genetics/hs-rna-and-protein-synthesis/v/molecular-structure-of-rna)
