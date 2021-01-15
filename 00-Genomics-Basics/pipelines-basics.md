@@ -44,5 +44,24 @@ Check the appendix for more information and exmples of variants.
 
 Tertiary analysis is finally the step that we start to ask questions of the genomic data that we've acquired. One of the questions we'll try to answer here is whether any of the variants that we found in the previous section are associated with a particular disease.
 
-One of the tools used to accomplish this is called a **Genome Wide Association Study(GWAS)**. Tertiary analysis is pretty broad, by focusing on this one implementation will help close the loop.
+One of the tools used to accomplish this is called a **Genome Wide Association Study(GWAS)**. So what's a **GWAS** and how are they conducted?
+
+In a **GWAS** researchers will find two groups of people, one group that is known to have a particular attribute (could be a disease or any other physical attribute), and a control group that doesn't have the same attribute. Both groups will have their DNA sequenced. The variants will then be analyzed, mostly **GWAS** focuses on **SNPs**.
+
+Let's assume that the particular attribute of interest is caused by a particular SNP. You'd expect to see these SNPs in higher frequency in the affected group and in lower frequency in the control group. In the image below, you can see how concentration of **SNP 3** in the affected group is higher than in the control group. Therefore you can conclude that **SNP 3** is associated with the attribute of interest.
+
+![Human Cell](./../99-Images/pipelines-gwas.png)
+
+**GWAS** have been used successfully to identify genetic variations that contribute to risk for various diseases. For example, three independent studies found that age related mucular degeneration (which leads to blindness) is associated with variation in the gene (**Complement factor H) which produces a protein involved in regulating inflammation.
+
+**include citation**
+https://www.genome.gov/about-genomics/fact-sheets/Genome-Wide-Association-Studies-Fact-Sheet
+
+Other diseases that have been studied and shown to be associated with genetic variation include:
+  - Diabetes
+  - Parkison's disease
+  - Some heart disorders
+  - Obesity
+  - Crohn's disease
+  - Response to anti-depressant medications
 
