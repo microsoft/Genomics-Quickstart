@@ -18,7 +18,7 @@ We will focus on Whole Genome Sequencing (WGS) in this overview.
 ## Prepare
 Due to limitations with current sequencing technology, the first stage of processing requires the DNA molecule to be fragmented into smaller segments. These segments called **short reads** are about 100-200 base pairs long. To increase the confidence in the output, hundreds of copies of this short reads are duplicated. This redundancy as we'll see later is by design to increase output confidence. 
 
-##Sequence
+## Sequence
 These short reads are then processed by the sequencing equipment which uses flouresence technology to read each base at a time. This process called **base calling**, results in a file based output called a **base call library**. Most sequencers include a post processing step that will convert this raw output to a user friendly format, and accounting for the **base call quality**. The more commonly used file formats include **FASTQ** or **uBAM**. This will be the starting point of most of the analysis that we'll perform. The FASTQ file has the base call quality for each base as one of it's values. Sequencing technology is not perfect, errors in base calling are not uncommon. 
 
 Check the appendix for examples and detailed discussion of these file formats.
