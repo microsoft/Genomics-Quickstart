@@ -66,4 +66,15 @@ Moving large files over the wire has some complexities which **AzCopy** is desig
 
 # Using Azure DataBox Gateway to move periodic data
 
+Azure Data Box Gateway is a storage solution that enables you to seamlessly send data to Azure. We are going to use **Azure Data Box Gateway** to continously move data from your private network to Azure. For a detailed overview and set up instructions, please check the [documentation](https://docs.microsoft.com/en-us/azure/databox-gateway/data-box-gateway-overview).
 
+You set up an Azure Data Box Gateway by building a VM on your private network that is based on an image that you download from the Azure portal. This [tutorial](https://docs.microsoft.com/en-us/azure/databox-gateway/data-box-gateway-deploy-prep) will walk you through the setup and configuration process. The VM requirements are discussed in the article, make sure you have a minimum of 2TB and 8GB of memory.
+
+Once the gateway device is set up, you will create a share that will be presented locally to load data unto. Once data is loaded it will be moved/syncronized with the configured storage account on Azure.
+
+There are few limits highlighted [here](https://docs.microsoft.com/en-us/azure/databox-gateway/data-box-gateway-limits), most of these shouldn't be an issue for a typical genomics process.
+
+For security best practices please review [this document](https://docs.microsoft.com/en-us/azure/databox-gateway/data-box-gateway-security). Each of the components in the solution have their own security requirements. For example, the solution uses an activation key to connect the local VM to the Azure resources. Use your best practices around managing the key.
+
+
+## Additional Resources
