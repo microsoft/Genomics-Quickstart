@@ -19,7 +19,7 @@ In order to access your storage account, you will need to choose what type of **
 
 If you don't have a **Service Principal**, follow [this guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) to learn more and set one up in your environment.
 
-Once you have one handy, there are a few minor configurations that you'll need to do before you can start using it on machine that you will use for copying data. We'll run through the set up on an Ubuntu 20.18 VM <!--- You may want to use, or even just say to use, an LTS Ubuntu distrobution. -->. If you are using Windows or MacOs, please refer to the [Getting started with AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10?toc=/azure/storage/blobs/toc.json) documentation.
+Once you have one handy, there are a few minor configurations that you'll need to do before you can start using it on machine that you will use for copying data. We'll run through the set up on an Ubuntu 20.18 VM <!--- You may want to use, or even just say to use, an LTS Ubuntu distribution. -->. If you are using Windows or MacOs, please refer to the [Getting started with AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10?toc=/azure/storage/blobs/toc.json) documentation.
 
 There are two components of the service principal that you'll need, the **application(client-id)** and the corresponding **client-secret**.
 
