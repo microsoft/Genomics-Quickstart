@@ -38,63 +38,15 @@ Step-by-step links to setup **Cromwell on Azure** in your Azure environment. Whe
     - [Prerequisites](https://github.com/microsoft/CromwellOnAzure#prerequisites) to deploy Cromwell
     - [Download the deployment executable](https://github.com/microsoft/CromwellOnAzure#download-the-deployment-executable). **NOTE** Choose the latest and right runtime for your machine.
       **NOTE** Check out the Optional section if you want to build the executable yourself.
-    - [Run the deployment executable](https://github.com/microsoft/CromwellOnAzure#run-the-deployment-executable). **NOTE** Open PowerShell, log in using `Az Login`, navigate to the folder where the executable was downloaded, then run the `./deploy-cromwell-on-azure-win.exe` command.
+    - [Run the deployment executable](https://github.com/microsoft/CromwellOnAzure#run-the-deployment-executable). **NOTE** Open PowerShell, log in using `Az Login`, navigate to the folder where the executable was downloaded, then run the `./deploy-cromwell-on-azure-win.exe` command./n
     Deployment takes ~20 minutes.
-    ![Deployment Process](./../99-Images/cromwell_deploy.png)
+    ![Deployment Process](./../99-Images/cromwell-deploy.png)/n
     When complete, you will see these resources in Azure,
     ![Cromwell Resources](./../99-Images/cromwell_resources.png)
 - "Hello World" workflow is automatically run as a check. In your default storage account,
     - Input files including `test.wdl`, `inputFile.txt`and `testInputs.json` are found in `inputs/test` container 
     - Output files are found in `cromwell-executions` container
     - After completion, the trigger JSON will be in `workflows` container in `succeeded` directory.
-    - Hello World trigger JSON file as seen in your storage account's workflows container in the succeeded directory:
-`json
-{
-  "WorkflowUrl": "/crom7fb6295400ab24/inputs/test/test.wdl",
-  "WorkflowInputsUrl": "/crom7fb6295400ab24/inputs/test/testInputs.json",
-  "WorkflowInputsUrls": null,
-  "WorkflowOptionsUrl": null,
-  "WorkflowDependenciesUrl": null
-}
-`
-    - Hello World WDL file "/crom7fb6295400ab24/inputs/test/test.wdl":
-`json
-task hello {
-  String name
-  File inputFile
-
-  command {
-    echo 'Hello ${name}!'
-    cat ${inputFile} > outfile2.txt
-  }
-  output {
-    File outfile1 = stdout()
-    File outfile2 = "outfile2.txt"
-  }
-  runtime {
-    docker: 'ubuntu:18.04'
-    preemptible: true
-  }
-}
-
-workflow test {
-  call hello
-}
-`
-    - Hello World testInputs.json file "/crom7fb6295400ab24/inputs/test/testInputs.json":
-`
-{
-  "test.hello.name": "World",
-  "test.hello.inputFile": "/crom7fb6295400ab24/inputs/test/inputFile.txt"
-}
-`
-    - Hello World inputFile.txt:
-`
-Hello from inputFile.txt!
-`
-
-Running **Cromwell** will require you to get comfortable with reading/writing **WDL** scripts. Fortunately, there's a sizeable community of practitioners and tonnes of resources available.
-
 
 ## Running Germline alignment and variant calling pipeline on Azure
 Germline alignment and variant calling pipeline on Azure(https://github.com/microsoft/gatk4-genome-processing-pipeline-azure#germline-alignment-and-variant-calling-pipeline-on-azure)
