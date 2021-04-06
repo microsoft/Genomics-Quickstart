@@ -33,22 +33,22 @@ Crowmwell on Azure
 
 Step-by-step links to setup **Cromwell on Azure** in your Azure environment. When this section is complete, you will have Cromwell running on your Azure environment and a test flow **Hello World WDL test** ran successfully. 
 
-### What is [Cromwell on Azure](https://github.com/microsoft/CromwellOnAzure#cromwell-on-azure)?
-### Steps to [Deploy your instance of Cromwell on Azure](https://github.com/microsoft/CromwellOnAzure#deploy-your-instance-of-cromwell-on-azure)
-#### [Prerequisites](https://github.com/microsoft/CromwellOnAzure#prerequisites) to deploy Cromwell
-#### [Download the deployment executable](https://github.com/microsoft/CromwellOnAzure#download-the-deployment-executable). **NOTE** Choose the latest and right runtime for your machine.
+- What is [Cromwell on Azure](https://github.com/microsoft/CromwellOnAzure#cromwell-on-azure)?
+- Steps to [Deploy your instance of Cromwell on Azure](https://github.com/microsoft/CromwellOnAzure#deploy-your-instance-of-cromwell-on-azure)
+    - [Prerequisites](https://github.com/microsoft/CromwellOnAzure#prerequisites) to deploy Cromwell
+    - [Download the deployment executable](https://github.com/microsoft/CromwellOnAzure#download-the-deployment-executable). **NOTE** Choose the latest and right runtime for your machine.
       **NOTE** Check out the Optional section if you want to build the executable yourself.
-#### [Run the deployment executable](https://github.com/microsoft/CromwellOnAzure#run-the-deployment-executable). **NOTE** Open PowerShell, log in using `Az Login`, navigate to the folder where the executable was downloaded, then run the `./deploy-cromwell-on-azure-win.exe` command.
+    - [Run the deployment executable](https://github.com/microsoft/CromwellOnAzure#run-the-deployment-executable). **NOTE** Open PowerShell, log in using `Az Login`, navigate to the folder where the executable was downloaded, then run the `./deploy-cromwell-on-azure-win.exe` command.
     Deployment takes ~20 minutes.
     ![Deployment Process](./../99-Images/cromwell_deploy.png)
     When complete, you will see these resources in Azure,
     ![Cromwell Resources](./../99-Images/cromwell_resources.png)
-### "Hello World" workflow is automatically run as a check. In your default storage account,
-#### Input files including `test.wdl`, `inputFile.txt`and `testInputs.json` are found in `inputs/test` container 
-#### Output files are found in `cromwell-executions` container
-#### After completion, the trigger JSON will be in `workflows` container in `succeeded` directory.
-#### Hello World trigger JSON file as seen in your storage account's workflows container in the succeeded directory:
-`
+- "Hello World" workflow is automatically run as a check. In your default storage account,
+    - Input files including `test.wdl`, `inputFile.txt`and `testInputs.json` are found in `inputs/test` container 
+    - Output files are found in `cromwell-executions` container
+    - After completion, the trigger JSON will be in `workflows` container in `succeeded` directory.
+    - Hello World trigger JSON file as seen in your storage account's workflows container in the succeeded directory:
+`json
 {
   "WorkflowUrl": "/crom7fb6295400ab24/inputs/test/test.wdl",
   "WorkflowInputsUrl": "/crom7fb6295400ab24/inputs/test/testInputs.json",
@@ -57,8 +57,8 @@ Step-by-step links to setup **Cromwell on Azure** in your Azure environment. Whe
   "WorkflowDependenciesUrl": null
 }
 `
-#### Hello World WDL file "/crom7fb6295400ab24/inputs/test/test.wdl":
-`
+    - Hello World WDL file "/crom7fb6295400ab24/inputs/test/test.wdl":
+`json
 task hello {
   String name
   File inputFile
@@ -88,7 +88,7 @@ workflow test {
   "test.hello.inputFile": "/crom7fb6295400ab24/inputs/test/inputFile.txt"
 }
 `
-#### Hello World inputFile.txt:
+    - Hello World inputFile.txt:
 `
 Hello from inputFile.txt!
 `
