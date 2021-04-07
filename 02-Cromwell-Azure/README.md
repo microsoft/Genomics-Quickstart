@@ -63,8 +63,8 @@ Here is an example of running the germline alignment and variant calling pipelin
     - The workflow returns a workflow ID that is appended to the trigger JSON file name and transferred to the `inprogress` directory in the workflows container. 
     - Once your workflow completes, you can view the output files of your workflow in the `cromwell-executions` container. 6 folders are created for the 6 import WDL files, and sub-folders within each for the sub-import WDL files and so on.
     - Additional output files from the Cromwell endpoint, including metadata and the timing file, are found in the `outputs` container. The outputs.json file shows all outputs created and where they are stored. To learn more about Cromwell's metadata and timing information, visit the [Cromwell documentation](https://cromwell.readthedocs.io/en/stable/).
-    - To abort a workflow that is in-progress, navigate to `workflows` container, place an empty file in the "abort" virtual directory named cromwellID.json, where "cromwellID" is the Cromwell workflow ID you wish to abort.
-    - [More details](https://github.com/microsoft/CromwellOnAzure/blob/master/docs/managing-your-workflow.md/#start-your-workflow)
+    - To abort a workflow that is in-progress, navigate to `workflows` container, place an empty file in the `abort` virtual directory named cromwellID.json, where "cromwellID" is the Cromwell workflow ID you wish to abort.
+    - [More details](https://github.com/microsoft/CromwellOnAzure/blob/master/docs/managing-your-workflow.md/#start-your-workflow) on starting the workflow.
 
 ## Running Somatic short variant analysis pipeline on Azure
 Somatic short variant analysis pipeline on Azure(https://github.com/microsoft/gatk4-somatic-snvs-indels-azure#somatic-short-variant-analysis-pipeline-on-azure)
