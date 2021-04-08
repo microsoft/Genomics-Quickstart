@@ -71,7 +71,7 @@ Here is an example of running the germline alignment and variant calling pipelin
 Here is an example of running the somatic short variant analysis pipeline, based on Best Practices [Genome Analysis Pipeline](https://github.com/microsoft/gatk4-somatic-snvs-indels-azure#somatic-short-variant-analysis-pipeline-on-azure) by Broad Institute of MIT and Harvard, on Cromwell on Azure.
 
 - Navigate to the germline Github with the above link
-- Download `WholeGenomeGermlineSingleSample.trigger.json` trigger json file
+- Download `mutect2.trigger.json` and `mutect2_pon.trigger.json` trigger json files
 - Start your workflow
     - Navigate to the default storage account created above. 
     - In the `workflows` container, place the trigger json files `mutect2.trigger.json` and `mutect2_pon.trigger.json` in the `new` directory via Azure Portal or Azure Storage Explorer. This initiates a Cromwell workflow. In the trigger `mutect2.trigger.json` file, `WorkflowUrl` points to the WDL file `mutect2.wdl` and `WorkflowinputsUrl` points to input file `mutect2.inputs.json`. In the trigger `mutect2_pon.trigger.json` file, `WorkflowUrl` points to the WDL file `mutect2_pon.wdl` and `WorkflowinputsUrl` points to input file `mutect2_pon.inputs.json`. All these are in the same [Github](https://github.com/microsoft/gatk4-somatic-snvs-indels-azure#somatic-short-variant-analysis-pipeline-on-azure). These files could be added as-is or updated for your functionality to `inputs` container and trigger file updated to point to the `input` container.
@@ -83,6 +83,6 @@ Here is an example of running the somatic short variant analysis pipeline, based
     - [More details](https://github.com/microsoft/CromwellOnAzure/blob/master/docs/managing-your-workflow.md/#start-your-workflow) on starting the workflow.
 
 ## Additional Resources
-[Germline short variant discovery SNPs + Indels](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-)
-[Somatic short variant discovery SNPs + Indels](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-)
+- [Germline short variant discovery SNPs + Indels](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-)
+- [Somatic short variant discovery SNPs + Indels](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-)
 
