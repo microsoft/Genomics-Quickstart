@@ -58,7 +58,7 @@ Here is an example of running the germline alignment and variant calling pipelin
 - Download `WholeGenomeGermlineSingleSample.trigger.json` trigger json file
 - Start your workflow
     - Navigate to the default storage account created above. 
-    - In the `workflows` container, place the trigger json file `WholeGenomeGermlineSingleSample.trigger.json` in the `new` directory via Azure Portal or Azure Storage Explorer. This initiates a Cromwell workflow. In the trigger jsonfile, `WorkflowUrl` points to the WDL file `WholeGenomeGermlineSingleSample.wdl` and `WorkflowinputsUrl` points to input file `WholeGenomeGermlineSingleSample.inputs.json`, both are in the same [Github](https://github.com/microsoft/gatk4-genome-processing-pipeline-azure#germline-alignment-and-variant-calling-pipeline-on-azure). These files could be added as-is or updated for your functionality to `inputs` container and trigger file updated to point to the `input` container.
+    - In the `workflows` container, place the trigger json file `WholeGenomeGermlineSingleSample.trigger.json` in the `new` directory via Azure Portal or Azure Storage Explorer. This initiates a Cromwell workflow. In the trigger json file, `WorkflowUrl` points to the WDL file `WholeGenomeGermlineSingleSample.wdl` and `WorkflowinputsUrl` points to input file `WholeGenomeGermlineSingleSample.inputs.json`, both are in the same [Github](https://github.com/microsoft/gatk4-genome-processing-pipeline-azure#germline-alignment-and-variant-calling-pipeline-on-azure). These files could be added as-is or updated for your functionality to `inputs` container and trigger file updated to point to the `input` container.
     - Break-down of the WDL file `WholeGenomeGermlineSingleSample.wdl`. This WDL pipeline implements data pre-processing and initial variant calling according to the GATK Best Practices for germline SNP and Indel discovery in human whole-genome data using 6 WDL files from the same Github: `UnmappedBamToAlignedBam.wdl, AggregatedBamQC.wdl, Qc.wdl, BamToCram.wdl, VariantCalling.wdl, GermlineStructs.wdl`. Within each of these WDL files are many sub WDL files.
     - The workflow returns a workflow ID that is appended to the trigger JSON file name and transferred to the `inprogress` directory in the workflows container. 
     - Once your workflow completes, you can view the output files of your workflow in the `cromwell-executions` container. 6 folders are created for the 6 import WDL files, and sub-folders within each for the sub-import WDL files and so on.
@@ -67,10 +67,22 @@ Here is an example of running the germline alignment and variant calling pipelin
     - [More details](https://github.com/microsoft/CromwellOnAzure/blob/master/docs/managing-your-workflow.md/#start-your-workflow) on starting the workflow.
 
 ## Running Somatic short variant analysis pipeline on Azure
-Somatic short variant analysis pipeline on Azure(https://github.com/microsoft/gatk4-somatic-snvs-indels-azure#somatic-short-variant-analysis-pipeline-on-azure)
+
+Here is an example of running the somatic short variant analysis pipeline, based on Best Practices [Genome Analysis Pipeline](https://github.com/microsoft/gatk4-somatic-snvs-indels-azure#somatic-short-variant-analysis-pipeline-on-azure) by Broad Institute of MIT and Harvard, on Cromwell on Azure.
+
+- Navigate to the germline Github with the above link
+- Download `WholeGenomeGermlineSingleSample.trigger.json` trigger json file
+- Start your workflow
+    - Navigate to the default storage account created above. 
+    - In the `workflows` container, place the trigger json files `mutect2.trigger.json` and `mutect2_pon.trigger.json` in the `new` directory via Azure Portal or Azure Storage Explorer. This initiates a Cromwell workflow. In the trigger `mutect2.trigger.json` file, `WorkflowUrl` points to the WDL file `mutect2.wdl` and `WorkflowinputsUrl` points to input file `mutect2.inputs.json`. In the trigger `mutect2_pon.trigger.json` file, `WorkflowUrl` points to the WDL file `mutect2_pon.wdl` and `WorkflowinputsUrl` points to input file `mutect2_pon.inputs.json`. All these are in the same [Github](https://github.com/microsoft/gatk4-somatic-snvs-indels-azure#somatic-short-variant-analysis-pipeline-on-azure). These files could be added as-is or updated for your functionality to `inputs` container and trigger file updated to point to the `input` container.
+    - The WDL file `mutect2.wdl` runs GATK4 Mutect 2 on a single tumor-normal pair or on a single tumor sample, and performs additional filtering and functional annotation tasks. The WDL file `mutect2_pon.wdl` creates a Mutect2 panel of normals.
+    - The workflow returns a workflow ID that is appended to the trigger JSON file name and transferred to the `inprogress` directory in the workflows container. 
+    - Once your workflow completes, you can view the output files of your workflow in the `cromwell-executions` container. 
+    - Additional output files from the Cromwell endpoint, including metadata and the timing file, are found in the `outputs` container. The outputs.json file shows all outputs created and where they are stored. The trigger files each creates one vcf file and its index with primary filtering applied. To learn more about Cromwell's metadata and timing information, visit the [Cromwell documentation](https://cromwell.readthedocs.io/en/stable/).
+    - To abort a workflow that is in-progress, navigate to `workflows` container, place an empty file in the `abort` virtual directory named cromwellID.json, where "cromwellID" is the Cromwell workflow ID you wish to abort.
+    - [More details](https://github.com/microsoft/CromwellOnAzure/blob/master/docs/managing-your-workflow.md/#start-your-workflow) on starting the workflow.
 
 ## Additional Resources
-
-[1]: https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-
-[2]: https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-
+[Germline short variant discovery SNPs + Indels](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-)
+[Somatic short variant discovery SNPs + Indels](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-)
 
