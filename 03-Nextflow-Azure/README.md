@@ -6,7 +6,7 @@
 
 Nextflow on Azure has very few moving parts making it relatively easy to get started. Nextflow will run on any POSIX compatible system, we'll use an Ubuntu 18.04 running on Azure. You can also run this on a Windows 10 machine, using the [WSL](https://docs.microsoft.com/en-us/windows/wsl/about). Nextflow also requires Bash 3.2 (or later) and Java 8 (or later, up to 15).
 
-We are going to use Azure Batch as the executor. For the execution in a cluster of computers the use a shared file system is required to allow the sharing of tasks input/output files.
+We are going to use Azure Batch as the executor. For the execution in a cluster of computers the use of a shared file system is required to allow the sharing of tasks input/output files.
 
 At the time of this writing, Azure support is still in public preview. The installation instructions will be slightly different once it's generally available. We'll reference documentation found in [this install guide](https://www.nextflow.io/docs/edge/index.html).
 
