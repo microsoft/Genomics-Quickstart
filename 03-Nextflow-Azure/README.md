@@ -2,13 +2,13 @@
 
 [Nextflow](https://github.com/nextflow-io/nextflow) is a bioinformatics workflow manager that enables the development of portable and reproducible workflows. Using Nextflow, you can deploy workflows on a variety of execution platforms including local, Kubernetes clusters and also on HPC. For this quickstart we will deploy our workflows to Azure Batch.
 
-# Nextflow on Azure..
+# Nextflow on Azure
 
-Nextflow on Azure has very few moving parts making it relatively easy to get started. Nextflow will run on any POSIX compatible system, we'll use an Ubuntu 18.04 running on Azure. You can also run this on a Windows 10 machine, using the [WSL](https://docs.microsoft.com/en-us/windows/wsl/about). Nextflow also requires Bash 3.2 (or later) and Java 8 (or later, up to 15).
+Nextflow on Azure has very few moving parts making it relatively easy to get started. Nextflow will run on any POSIX compatible system, we'll use an Ubuntu 18.04 running on Azure but you can also run this on a Windows 10 machine, using  [WSL](https://docs.microsoft.com/en-us/windows/wsl/about). Nextflow also requires Bash 3.2 (or later) and Java 8 (or later, up to 15).
 
-We are going to use Azure Batch as the executor. For the execution in a cluster of computers the use of a shared file system is required to allow the sharing of tasks input/output files.
+We are going to use Azure Batch as the executor. For the execution in a cluster of computers the use of a shared file system is required to allow the sharing of the task's input/output files.
 
-At the time of this writing, Azure support is still in public preview. The installation instructions will be slightly different once it's generally available. We'll reference documentation found in [this install guide](https://www.nextflow.io/docs/edge/index.html).
+At the time of this writing, Azure support for Nextflow on Azure is still in public preview. The installation instructions will be slightly different once it's generally available. For the rest of the install, we'll reference documentation found in [this install guide](https://www.nextflow.io/docs/edge/index.html).
 
 ## GA Install Instructions:
 
@@ -18,23 +18,23 @@ curl -s https://get.nextflow.io | bash
 
 ## Edge-Release (Public Preview) Install Instructions
 
-The support for Azure Cloud requires Nextflow version 21.02.0-edge or later. If you don’t have it installed use the following command to download it in your computer:
+The support for Azure Cloud requires Nextflow version 21.02.0-edge or later. If you don’t have it installed, use the following command to download it in your computer:
 
 ```shell
 export NXF_EDGE=1
 curl get.nextflow.io | bash
 ```
 
-After running above, command check the version of Nextflow installed by running this command.
+After running the above, command check the version of Nextflow installed by running this command.
 
 ```shell
 nextflow -v
 ```
 
-If the version is not the current release version, it wasn's for my install, then you'll have one additional install method.
+If the version is not the current release version, which it may not be, then you'll have one additional installation requirement.
 - Go to the [Nextflow releases page](https://github.com/nextflow-io/nextflow/releases) on Github.
 - Under the **Assets** header, get the nextflow.{version}-edge-all url.
-- On a terminal window, running the following command with the asset URL.
+- On a terminal window, run the following command with the asset URL.
   - ```shell
     wget -qO- ASSET-URL-FROM-ABOVE | bash
     ```
@@ -46,13 +46,13 @@ Before we run any pipelines on Azure, let's run through a [basic pipeline exampl
 
 ### Running a basic pipeline locally
 
-For a detailed introduction to Nextflow using [this](https://www.nextflow.io/docs/latest/basic.html) guide.
+TFor a detailed introduction to Nextflow, use [this](https://www.nextflow.io/docs/latest/basic.html) guide.
 
 Nextflow is based on the **dataflow** programming model. A Nextflow pipeline is made up of a series of processes that communicate through channels. 
 
-The example below has two processes **splitSequences** and **reverse**. Each process is made up of an **input** channel, an **output** channel and a script execution block.
+The example below has two processes, **splitSequences** and **reverse**. Each process is made up of an **input** channel, an **output** channel and a script execution block.
 
-Any input parameters that's required can be passed in using the **params.** syntax. For example **params.in**, will create an input parameter called **in**.
+Any input parameters that are required can be passed in using the **params.** syntax. For example **params.in**, will create an input parameter called **in**.
 
 ```bash
 #!/usr/bin/env nextflow
@@ -99,19 +99,19 @@ result.subscribe { println it }
 
 Save this script as a nextflow file (**.nf**). In the same folder as your script file, create a folder called **data** and save a fasta file called **sample.fa** in that folder. That's it, you can now run your basic pipeline and see it print the reverse of your **sample.fa** sequence.
 
-Run this is in your working directory. If you see any errors, check for syntax issues with the script first.
+Run this in your working directory. If you see any errors, check for syntax issues with the script first.
 
 ```bash
 nextflow run main.nf
 ```
 
-### Running a pipeline on Azure.
+### Running a pipeline on Azure
 
-So, what does it take to run Nextflow on the Azure? Nextflow on Azure requires at the minimum two Azure services, [**Azure Batch**](https://docs.microsoft.com/en-us/azure/batch/batch-account-create-portal)  and [**Azure Storage**](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create). Follow the guides below to set up both services on Azure.
+Nextflow on Azure requires at minimum two Azure services, [**Azure Batch**](https://docs.microsoft.com/en-us/azure/batch/batch-account-create-portal)  and [**Azure Storage**](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create). Follow the guides below to set up both services on Azure.
 
-We will use a more complicated pipeline which can be found on [Github](https://github.com/nextflow-io/rnatoy). You can clone this repo to a local working folder.
+For this example, we will use a more complicated pipeline which can be found on [Github](https://github.com/nextflow-io/rnatoy). You can clone this repo to a local working folder.
 
-Next, we'll edit the **nextflow.config** file, to add Azure specific parameters.Use this [guide](https://www.nextflow.io/blog/2021/introducing-nextflow-for-azure-batch.html) for additional information. Your config file will look something like this.
+Next, we'll edit the **nextflow.config** file, to add Azure specific parameters, use this [guide](https://www.nextflow.io/blog/2021/introducing-nextflow-for-azure-batch.html) for additional information. Your config file will look something like this.
 
 ```bash
 plugins {
@@ -146,7 +146,7 @@ profiles {
 ```
 Follow the steps in the documentation to get your storage and batch account names and keys.
 
-Create a container called **cbcrg-eu** and then copy the **ggal** folder in the local folder to the container on Azure. All the files referenced by this pipeline will be in that folder. If all your configuration is set up properly, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console. You can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
+Create a container called **cbcrg-eu** and then copy the **ggal** folder in the local folder to the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
 
 ```bash
 :~$ nextflow run rnatoy -w az://nextflow/work
@@ -156,32 +156,32 @@ We are passing the working directory as a parameter, but this could be specified
 
 As with all Azure services, be aware of the cost of various services especially for long running projects.
 
-## Automate running pipelines using Nextflow Tower.
+## Automate running pipelines using Nextflow Tower
 
-Running Nextflow on the command line is good for development, testing and debugging. Once your pipeline is ready for production use, you'll want to automate the process of executing and monitoring the service. We are going to use **Nextflow Tower** for this. Nextflow Tower allows you to monitor the execution of any of your Nextflow data analysis pipelines.
+Running Nextflow from command line is good for development, testing and debugging. Once your pipeline is ready for production use you'll want to automate the process of executing and monitoring the service; we are going to use **Nextflow Tower** for this. Nextflow Tower allows you to monitor the execution of any of your Nextflow data analysis pipelines.
 
 [**Seqera Labs**](), the team behind **Nextflow Tower**, provide a couple of different options for running **Nextflow Tower**.
-- As a paid SASS service (Ideal for production workloads)
-- As a free SASS service (Ideal for dev/test workloads)
-- As open source code you can download and run on your network.
+- Paid SASS service (Ideal for production workloads).
+- Free SASS service (Ideal for dev/test workloads).
+- Open source code you can download and run on your network.
 
 At the moment of this writing, the SASS services are in preview and require you to sign up for access. Although I'm going to show you to stand this up on your network, I highly recommend using the paid service for production workloads.
 
-### Installing Nextflow Tower on an Ubuntu 18.04 VM.
+### Installing Nextflow Tower on an Ubuntu 18.04 VM
 
-Before you get started, make sure you have the following requirements satisfied.
+Before you get started, make sure you have met the following requirements :
 - You will need **Java 8**, I used OpenJDK. Make sure you have the JDK installed, needs some jar files not in JRE.
-- You will need **Docker engine** and **Docker Compose** installed.
+- You will need **Docker engine**, and **Docker Compose** installed.
 - You will need **make** installed, it's not installed by default on Ubuntu 18.04.
 - You will need an **SMTP Relay** service.
-  - Easiest option is to use a SASS services line [SendGrid](https://sendgrid.com/). 
-  - Free option should be enough for what we need.
-  - Follow the process to create a validated user, this account will be your **sender** account.
-  - Use the SMTP Relay option and capture your host/port/user/password information.
-  - You will use this information later when setting up **Nextflow Tower**
-  - **Nextflow Tower** will this service to send emails during the authentication/authorization process.
+  - The easiest option is to use a SASS services line [SendGrid](https://sendgrid.com/).
+    - The free sendgrid tier should be enough for what we need.
+    - Follow the process to create a validated user, this account will be your **sender** account.
+    - Use the SMTP Relay option and capture your host/port/user/password information.
+    - You will use this information later when setting up **Nextflow Tower**
+    - **Nextflow Tower** will this service to send emails during the authentication/authorization process.
 
-The code & installation instruction  is available on [Github](https://github.com/seqeralabs/nf-tower).
+The code & installation instructions for installing a NextFlow Tower are available on [Github](https://github.com/seqeralabs/nf-tower).
 
 Follow the instructions to **download** and **make** the installation package.
 
@@ -200,11 +200,11 @@ If everything works well, you'll see the following line as your last line in the
 
 ![NF Tower](../99-Images/nf-tower-install-sucess.png)
 
-Congratulations! Before you break for a cold brew, test to make sure you can launch your **Nextflow Tower** installation by going to htt://{your-vm-public-ip}:8000. Follow the instructions to sign-in to your **Nextflow Tower** installation. On successful sign-in, you will see the **Get Started** guide that walks your through the steps required to run your workflows on your **Nextflow Tower** instance.
+Congratulations! Before you break for a cold brew, test to make sure you can launch your **Nextflow Tower** installation by going to http://{your-vm-public-ip}:8000. Follow the instructions to sign-in to your **Nextflow Tower** installation. On successful sign-in, you will see the **Get Started** guide that walks your through the steps required to run your workflows on your **Nextflow Tower** instance.
 
 The **TOWER_ACCESS_TOKEN** links your local nextflow to your Tower instance. You can get your token for your local instance by going to http://{your-vm-public-ip}:8000/tokens.
 
-Since Azure support was just recently added, the NXF_VER will be the **edge** version that you installed when your first set up Nextflow. For example, I used **21.03.0-edge**
+Since Azure support for Nextflow on Azure was just recently added, the NXF_VER will be the **edge** version that you installed when your first set up Nextflow. For example, I used **21.03.0-edge**.
 
 ```shell
 export TOWER_ACCESS_TOKEN=<YOUR ACCESS TOKEN>
@@ -213,9 +213,9 @@ export NXF_VER=20.10.0
 
 ## Running your first workflow on Nextflow Tower
 
-If you followed the steps in the previous sections, you have a functional **Nextflow Tower** install and you also have a local basic worklow that you can use to test the installation.
+If you followed the steps in the previous sections, you have a functional **Nextflow Tower** install and you also have a local basic workflow that you can use to test the installation.
 
-With your installation running, go to your **basic workflow** working directory from earlier step and run the following commands.
+With your installation running, go to your **basic workflow** working directory from the earlier steps and run the following commands.
 
 ```shell
 nextflow run basic -with-tower http://{your-vm-public-ip}:8000/apis
