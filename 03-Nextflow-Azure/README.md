@@ -28,7 +28,7 @@ curl get.nextflow.io | bash
 After running the above, command check the version of Nextflow installed by running this command.
 
 ```shell
-nextflow -v
+./nextflow -v
 ```
 
 If the version is not the current release version, which it may not be, then you'll have one additional installation requirement.
@@ -102,7 +102,7 @@ Save this script as a nextflow file (**.nf**). In the same folder as your script
 Run this in your working directory. If you see any errors, check for syntax issues with the script first.
 
 ```bash
-nextflow run main.nf
+./nextflow run main.nf
 ```
 
 ### Running a pipeline on Azure
