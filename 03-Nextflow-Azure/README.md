@@ -46,7 +46,7 @@ Before we run any pipelines on Azure, let's run through a [basic pipeline exampl
 
 ### Running a basic pipeline locally
 
-TFor a detailed introduction to Nextflow, use [this](https://www.nextflow.io/docs/latest/basic.html) guide.
+For a detailed introduction to Nextflow, use [this](https://www.nextflow.io/docs/latest/basic.html) guide.
 
 Nextflow is based on the **dataflow** programming model. A Nextflow pipeline is made up of a series of processes that communicate through channels. 
 
@@ -149,7 +149,7 @@ Follow the steps in the documentation to get your storage and batch account name
 Create a container called **cbcrg-eu** and then copy the **ggal** folder in the local folder to the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
 
 ```bash
-:~$ nextflow run rnatoy -w az://nextflow/work
+./nextflow run rnatoy -w az://cbcrg-eu/work
 ```
 
 We are passing the working directory as a parameter, but this could be specified in the **nextflow.config** file. Check this [guide](https://www.nextflow.io/docs/edge/azure.html) for more details on the configuration options available.
