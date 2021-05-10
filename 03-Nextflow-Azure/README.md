@@ -2,21 +2,30 @@
 
 [Nextflow](https://github.com/nextflow-io/nextflow) is a bioinformatics workflow manager that enables the development of portable and reproducible workflows. Using Nextflow, you can deploy workflows on a variety of execution platforms including local, Kubernetes clusters and also on HPC. For this quickstart we will deploy our workflows to Azure Batch.
 
-# Nextflow on Azure
+# Nextflow
 
-Nextflow on Azure has very few moving parts making it relatively easy to get started. Nextflow will run on any POSIX compatible system, we'll use an Ubuntu 18.04 running on Azure but you can also run this on a Windows 10 machine, using  [WSL](https://docs.microsoft.com/en-us/windows/wsl/about). Nextflow also requires Bash 3.2 (or later) and Java 8 (or later, up to 15).
+Nextflow has very few moving parts making it relatively easy to get started. Nextflow will run on any POSIX compatible system, we'll use an Ubuntu 18.04 running on Azure but you can also run this on a Windows 10 machine, using  [WSL](https://docs.microsoft.com/en-us/windows/wsl/about). Nextflow also requires Bash 3.2 (or later) and Java 8 (or later, up to 15).
 
-We are going to use Azure Batch as the executor. For the execution in a cluster of computers the use of a shared file system is required to allow the sharing of the task's input/output files.
+For Nextflow on Azure, we are going to use Azure Batch as the executor. For the execution in a cluster of computers the use of a shared file system is required to allow the sharing of the task's input/output files.
 
-At the time of this writing, Azure support for Nextflow on Azure is still in public preview. The installation instructions will be slightly different once it's generally available. For the rest of the install, we'll reference documentation found in [this install guide](https://www.nextflow.io/docs/edge/index.html).
+At the time of this writing, Azure support for Nextflow on Azure is still in public preview. The installation instructions will be slightly different once it's generally available. Reference documentation can be found [here](https://www.nextflow.io/docs/edge/index.html).
 
-## GA Install Instructions:
+## Pre-requisites:
+- **[If you are running Windows 10, enable Windows Linux Subsystem](https://code.visualstudio.com/docs/remote/wsl-tutorial#_enable-wsl).** You can use Windows Dialog or PowerShell. Restart Windows.
+- **[Ubuntu](https://code.visualstudio.com/docs/remote/wsl-tutorial#_install-a-linux-distro).** You can install from the Microsoft Store by using the store app or by searching for Ubuntu in the Windows search bar.
+- **Java 8 (or later, up to 15)**
+```shell
+sudo apt update 
+sudo apt install openjdk-8-jre-headless 
+```
+
+## Nextflow (GA) Install Instructions:
 
 ```shell
 curl -s https://get.nextflow.io | bash
 ```
 
-## Edge-Release (Public Preview) Install Instructions
+## Optional: Edge-Release (Public Preview) Install Instructions
 
 The support for Azure Cloud requires Nextflow version 21.02.0-edge or later. If you don’t have it installed, use the following command to download it in your computer:
 
@@ -40,19 +49,15 @@ If the version is not the current release version, which it may not be, then you
     ```
 This should install the latest release version of Nextflow.
 
-## Running Nextflow on Azure
+## Running Nextflow Locally
 
-Before we run any pipelines on Azure, let's run through a [basic pipeline example](https://www.nextflow.io/example1.html) running locallly to make sure everything's working as intended. This is also a good introduction to Nextflow.
-
-### Running a basic pipeline locally
-
-For a detailed introduction to Nextflow, use [this](https://www.nextflow.io/docs/latest/basic.html) guide.
+Let's run through the below basic pipeline which also can be found [here](https://www.nextflow.io/example1.html) locally. For a detailed introduction to Nextflow, use [this](https://www.nextflow.io/docs/latest/basic.html) guide.
 
 Nextflow is based on the **dataflow** programming model. A Nextflow pipeline is made up of a series of processes that communicate through channels. 
 
-The example below has two processes, **splitSequences** and **reverse**. Each process is made up of an **input** channel, an **output** channel and a script execution block.
+The example below has two processes, **splitSequences** and **reverse**. Each process is made up of an **input** channel, an **output** channel and a script execution block. Any input parameters that are required can be passed in using the **params.** syntax. For example **params.in**, will create an input parameter called **in**.
 
-Any input parameters that are required can be passed in using the **params.** syntax. For example **params.in**, will create an input parameter called **in**.
+Save the below script as a nextflow file (**basicpipeline.nf**) in the same folder where you installed nextflow above. Create a folder called **data** and save **[sample.fa](./97-Data/sample.fa)** fasta file in that folder. 
 
 ```bash
 #!/usr/bin/env nextflow
@@ -95,23 +100,23 @@ process reverse {
  * print the channel content
  */
 result.subscribe { println it }
-```
+``` 
 
-Save this script as a nextflow file (**.nf**). In the same folder as your script file, create a folder called **data** and save a fasta file called **sample.fa** in that folder. That's it, you can now run your basic pipeline and see it print the reverse of your **sample.fa** sequence.
-
-Run this in your working directory. If you see any errors, check for syntax issues with the script first.
+Run your **basic pipeline** and see it print the reverse of your **sample.fa** sequence. If you see any errors, check for syntax issues with the script first.
 
 ```bash
-./nextflow run main.nf
+./nextflow run basicpipeline.nf
 ```
 
-### Running a pipeline on Azure
+## Running Nextflow on Azure
 
-Nextflow on Azure requires at minimum two Azure services, [**Azure Batch**](https://docs.microsoft.com/en-us/azure/batch/batch-account-create-portal)  and [**Azure Storage**](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create). Follow the guides below to set up both services on Azure.
+Nextflow on Azure requires at minimum two Azure services, [**Azure Batch**](https://docs.microsoft.com/en-us/azure/batch/batch-account-create-portal) and [**Azure Storage**](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create). Follow the guides to set up both services on Azure, and to get your storage and batch account names and keys.
 
-For this example, we will use a more complicated pipeline which can be found on [Github](https://github.com/nextflow-io/rnatoy). You can clone this repo to a local working folder.
+For this example, we will use a more complicated pipeline which can be found on [Github](https://github.com/nextflow-io/rnatoy). Clone this repo to a local working folder.
 
-Next, we'll edit the **nextflow.config** file, to add Azure specific parameters, use this [guide](https://www.nextflow.io/blog/2021/introducing-nextflow-for-azure-batch.html) for additional information. Your config file will look something like this.
+Next, we'll edit the **nextflow.config** file, to add 5 Azure specific parameters between < and >, use this [guide](https://www.nextflow.io/blog/2021/introducing-nextflow-for-azure-batch.html) for additional information. Your config file will look something like this.
+
+NOTE: If you have already installed nextflow in a different folder, add it to PATH. And/or install nextflow in the folder installed from Github.
 
 ```bash
 plugins {
@@ -125,7 +130,7 @@ process {
 
 azure {
   batch {
-    location = 'westeurope'
+    location = '<YOUR BATCH ACCOUNT LOCATION>'
     accountName = '<YOUR BATCH ACCOUNT NAME>'
     accountKey = '<YOUR BATCH ACCOUNT KEY>'
     autoPoolMode = true
@@ -144,9 +149,8 @@ profiles {
   }
 }
 ```
-Follow the steps in the documentation to get your storage and batch account names and keys.
 
-Create a container called **cbcrg-eu** and then copy the **ggal** folder in the local folder to the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
+Create a container called **cbcrg-eu** and then copy the **ggal** folder from the local cloned folder from Github into the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
 
 ```bash
 ./nextflow run rnatoy -w az://cbcrg-eu/work
