@@ -57,7 +57,7 @@ Nextflow is based on the **dataflow** programming model. A Nextflow pipeline is 
 
 The example below has two processes, **splitSequences** and **reverse**. Each process is made up of an **input** channel, an **output** channel and a script execution block. Any input parameters that are required can be passed in using the **params.** syntax. For example **params.in**, will create an input parameter called **in**.
 
-Save the below script as a nextflow file (**basicpipeline.nf**) in the same folder where you installed nextflow above. Create a folder called **data** and save **[sample.fa](./97-Data/sample.fa)** fasta file in that folder. 
+Save the below script as a nextflow file (**basicpipeline.nf**) in the same folder where you installed nextflow above. Create a folder called **data** and save **[sample.fa](/97-Data/sample.fa)** fasta file in that folder. 
 
 ```bash
 #!/usr/bin/env nextflow
