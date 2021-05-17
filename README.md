@@ -1,14 +1,48 @@
 # Project
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+The field of Genomics is intimidating for a lot of people. The vocabulary and terminology makes it hard to get started. Given the massive computational needs of the genomics field today, we need more technical people learning about genomics and helping practitioners build scalable and secure systems. Our goal is to make this topic more approachable.
 
-As the maintainer of this project, please make a few updates:
+Our target is anyone who is working in technology today that wants to help their company, customer or just the favorite project build better solutions. Our focus is on the Azure cloud, but with some adjustments, the same patterns could be used elsewhere.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+If you are new, follow the guide sequentially. If you are looking for a specific product or service, feel free to jump to that section.
+
+## Genomics Basics
+
+In this section we review the biological terms and concepts that you should be familiar with. We define DNA, RNA, Chromosomes, Genes and introduce the central dogma. If you are new to the study of genetics or need a refresher, start here.
+
+- [DNA Basics](../00-Genomics-Basics/dna-basics.md)
+
+## Pipeline Basics
+
+In this section we introduce genomic pipelines. Why they are necessary and the key steps involved. We cover reference genomes, alignment and variant calling and some basic analysis.
+
+We'll also introduce some of the common workflow engines out there, mostly focusing on Cromwell and Nextflow.
+
+- [Genomic Pipelines Basics](../00-Genomics-Basics/pipelines-basics.md)
+
+## Data Migration.
+
+Genomics datasets tend to be very large. If you have accumulated a lot of data on-premises and are looking for best practices around moving the data to the cloud, this section has a couple of options
+
+- [Data migration](../Genomics-Quickstart/01-Data-Migration/README.md)
+
+## Cromwell on Azure
+
+Use this guide to get started on Cromwell on Azure.
+
+- [Cromwell on Azure](../Genomics-Quickstart/02-Cromwell-Azure/README.md)
+
+## Nextflow on Azure
+
+Azure has native support for Nextflow. Use this guide to get started on Nextflow on Azure.
+
+- [Data migration](../Genomics-Quickstart/03-Nextflow-Azure/README.md)
+
+
+## Feedback
+
+We opened this project for collaborating and contributions from anyone making this journey. If you would like to contribute, please check the guidelines below.
+
 
 ## Contributing
 

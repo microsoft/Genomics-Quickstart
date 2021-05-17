@@ -12,6 +12,6 @@ In this section we review the biological terms and concepts that you should be f
 
 In this section we introduce genomic pipelines. Why they are necessary and the key steps involved. We cover reference genomes, alignment and variant calling and some basic analysis.
 
-We'll also introduce some of the common workflow engines out there, mostly focusing on Cromwell, Nextflow and Snakemake.
+We'll also introduce some of the common workflow engines out there, mostly focusing on Cromwell and Nextflow.
 
 - [Genomic Pipelines Basics](../00-Genomics-Basics/pipelines-basics.md)
