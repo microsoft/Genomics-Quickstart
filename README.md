@@ -10,7 +10,7 @@ If you are new, follow the guide sequentially. If you are looking for a specific
 
 In this section we review the biological terms and concepts that you should be familiar with. We define DNA, RNA, Chromosomes, Genes and introduce the central dogma. If you are new to the study of genetics or need a refresher, start here.
 
-- [DNA Basics](../00-Genomics-Basics/dna-basics.md)
+- [DNA Basics](./00-Genomics-Basics/dna-basics.md)
 
 ## Pipeline Basics
 
@@ -18,25 +18,25 @@ In this section we introduce genomic pipelines. Why they are necessary and the k
 
 We'll also introduce some of the common workflow engines out there, mostly focusing on Cromwell and Nextflow.
 
-- [Genomic Pipelines Basics](../00-Genomics-Basics/pipelines-basics.md)
+- [Genomic Pipelines Basics](./00-Genomics-Basics/pipelines-basics.md)
 
 ## Data Migration.
 
 Genomics datasets tend to be very large. If you have accumulated a lot of data on-premises and are looking for best practices around moving the data to the cloud, this section has a couple of options
 
-- [Data migration](../Genomics-Quickstart/01-Data-Migration/README.md)
+- [Data migration](./Genomics-Quickstart/01-Data-Migration/README.md)
 
 ## Cromwell on Azure
 
 Use this guide to get started on Cromwell on Azure.
 
-- [Cromwell on Azure](../Genomics-Quickstart/02-Cromwell-Azure/README.md)
+- [Cromwell on Azure](./Genomics-Quickstart/02-Cromwell-Azure/README.md)
 
 ## Nextflow on Azure
 
 Azure has native support for Nextflow. Use this guide to get started on Nextflow on Azure.
 
-- [Data migration](../Genomics-Quickstart/03-Nextflow-Azure/README.md)
+- [Data migration](./Genomics-Quickstart/03-Nextflow-Azure/README.md)
 
 
 ## Feedback
