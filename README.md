@@ -36,7 +36,7 @@ Use this guide to get started on Cromwell on Azure.
 
 Azure has native support for Nextflow. Use this guide to get started on Nextflow on Azure.
 
-- [Data migration](./03-Nextflow-Azure/README.md)
+- [Nextflow on Azure](./03-Nextflow-Azure/README.md)
 
 
 ## Feedback
