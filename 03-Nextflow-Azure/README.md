@@ -150,13 +150,16 @@ profiles {
 }
 ```
 
-Create a container called **cbcrg-eu** and then copy the **data/ggal** folder from the local cloned folder from Github into the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
+Create a container called **cbcrg-eu** and then copy the **data/ggal** folder from the local cloned folder from Github into the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. 
+Run the below to execute **main.nf** in **rnatoy** folder. 
 
 ```bash
 ./nextflow run rnatoy -w az://cbcrg-eu/work
 ```
 
-We are passing the working directory as a parameter, but this could be specified in the **nextflow.config** file. Check this [guide](https://www.nextflow.io/docs/edge/azure.html) for more details on the configuration options available.
+NOTE: this job will take about 10 minutes to complete.
+We are passing the work directory as a parameter, but this could be specified in the **nextflow.config** file. Check this [guide](https://www.nextflow.io/docs/edge/azure.html) for more details on the configuration options available.
+Once complete, there are be many folders created in **work** folder in **cbcrg-eu** container, each for each output step in the `main/nf` pipeline. 
 
 As with all Azure services, be aware of the cost of various services especially for long running projects.
 
