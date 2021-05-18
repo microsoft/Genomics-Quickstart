@@ -57,7 +57,7 @@ Nextflow is based on the **dataflow** programming model. A Nextflow pipeline is 
 
 The example below has two processes, **splitSequences** and **reverse**. Each process is made up of an **input** channel, an **output** channel and a script execution block. Any input parameters that are required can be passed in using the **params.** syntax. For example **params.in**, will create an input parameter called **in**.
 
-Save the below script as a nextflow file (**basicpipeline.nf**) in the same folder where you installed nextflow above. Create a folder called **data** and save **[sample.fa](/97-Data/sample.fa)** fasta file in that folder. 
+Save the below script as a nextflow file (**basicpipeline.nf**) in the same folder where you installed nextflow above. Create a folder called **data** and save **[sample.fa](/05-Data/sample.fa)** fasta file in that folder. 
 
 ```bash
 #!/usr/bin/env nextflow
@@ -150,7 +150,7 @@ profiles {
 }
 ```
 
-Create a container called **cbcrg-eu** and then copy the **ggal** folder from the local cloned folder from Github into the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
+Create a container called **cbcrg-eu** and then copy the **data/ggal** folder from the local cloned folder from Github into the container on Azure. All the files referenced by this pipeline will be in that folder. If everything is properly configured, running the following command will kickoff the pipeline on Azure. Nextflow will print out the output on the console, but you can also log into the portal or use **Azure Batch Explorer** to check the progress of your job. FYI, this job will take about 10 minutes to complete.
 
 ```bash
 ./nextflow run rnatoy -w az://cbcrg-eu/work
