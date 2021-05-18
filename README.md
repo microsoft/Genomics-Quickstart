@@ -24,19 +24,19 @@ We'll also introduce some of the common workflow engines out there, mostly focus
 
 Genomics datasets tend to be very large. If you have accumulated a lot of data on-premises and are looking for best practices around moving the data to the cloud, this section has a couple of options
 
-- [Data migration](../01-Data-Migration/README.md)
+- [Data migration](./01-Data-Migration/README.md)
 
 ## Cromwell on Azure
 
 Use this guide to get started on Cromwell on Azure.
 
-- [Cromwell on Azure](../02-Cromwell-Azure/README.md)
+- [Cromwell on Azure](./02-Cromwell-Azure/README.md)
 
 ## Nextflow on Azure
 
 Azure has native support for Nextflow. Use this guide to get started on Nextflow on Azure.
 
-- [Data migration](../03-Nextflow-Azure/README.md)
+- [Data migration](./03-Nextflow-Azure/README.md)
 
 
 ## Feedback
