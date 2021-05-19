@@ -35,7 +35,7 @@ This section includes the step-by-step links to setup **Cromwell on Azure** in y
 
 - What is [Cromwell on Azure](https://github.com/microsoft/CromwellOnAzure#cromwell-on-azure)?
 - Steps to [Deploy your instance of Cromwell on Azure](https://github.com/microsoft/CromwellOnAzure#deploy-your-instance-of-cromwell-on-azure)
-    - [Prerequisites](https://github.com/microsoft/CromwellOnAzure#prerequisites) to deploy Cromwell
+    - [Prerequisites](https://github.com/microsoft/CromwellOnAzure#prerequisites) to deploy Cromwell. **NOTE**: If you are using Powershell and getting errors, clear context by running this command `Clear-AzContext` and Login.
     - [Download the deployment executable](https://github.com/microsoft/CromwellOnAzure#download-the-deployment-executable). **NOTE** Choose the latest and right runtime for your machine.
       **NOTE** Check out the Optional section if you want to build the executable yourself.
     - [Run the deployment executable](https://github.com/microsoft/CromwellOnAzure#run-the-deployment-executable). **NOTE** Open PowerShell, log in using `Az Login`, navigate to the folder where the executable was downloaded, then run this `.\deploy-cromwell-on-azure-win.exe --SubscriptionId <Your Subscription ID> --RegionName westus2 --MainIdentifierPrefix crom ` command.
