@@ -38,7 +38,7 @@ This section includes the step-by-step links to setup **Cromwell on Azure** in y
     - [Prerequisites](https://github.com/microsoft/CromwellOnAzure#prerequisites) to deploy Cromwell
     - [Download the deployment executable](https://github.com/microsoft/CromwellOnAzure#download-the-deployment-executable). **NOTE** Choose the latest and right runtime for your machine.
       **NOTE** Check out the Optional section if you want to build the executable yourself.
-    - [Run the deployment executable](https://github.com/microsoft/CromwellOnAzure#run-the-deployment-executable). **NOTE** Open PowerShell, log in using `Az Login`, navigate to the folder where the executable was downloaded, then run the `./deploy-cromwell-on-azure-win.exe` command.
+    - [Run the deployment executable](https://github.com/microsoft/CromwellOnAzure#run-the-deployment-executable). **NOTE** Open PowerShell, log in using `Az Login`, navigate to the folder where the executable was downloaded, then run this `.\deploy-cromwell-on-azure-win.exe --SubscriptionId <Your Subscription ID> --RegionName westus2 --MainIdentifierPrefix crom ` command.
 
     Deployment takes ~20 minutes.
     ![Deployment Process](./../99-Images/cromwell-deploy.png)
